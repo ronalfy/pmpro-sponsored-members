@@ -1866,6 +1866,20 @@ function pmprosm_the_content_account_page($content)
                 ?>
 			</div> <!-- end pmpro_account-sponsored -->
 			<?php
+
+			global $pmprosm_sponsored_account_levels_add_seats;
+			if ( $pmprosm_sponsored_account_levels_add_seats ) {
+				$seats_message = '<hr />';
+				$seats_message .= '<h3>' . esc_html__( 'Add Seats', 'pmpro_sponsored_members' ) . '</h3>';
+				$seats_message .= '<p>' . esc_html__( 'Want to add more seats? Checkout below.', 'pmpro_sponsored_members' ) . '</p>';
+				$seats_message .= sprintf(
+					'<div class="pmprosm_add_seats_checkout"><a class="pmpro_btn btn" href="%s">%s</a></div>', 
+					esc_url( pmpro_url( 'checkout' ) ),
+					esc_html__( 'Checkout and Add Seats', 'pmpro_sponsored_members' )
+				);
+				$seats_message .= '<hr />';
+				echo $seats_message;
+			}
 			
 			$temp_content = ob_get_contents();
 			ob_end_clean();
